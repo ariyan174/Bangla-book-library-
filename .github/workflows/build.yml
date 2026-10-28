@@ -23,6 +23,12 @@ jobs:
       - name: Get packages
         working-directory: m1
         run: flutter pub get
+      - name: Set app name
+        working-directory: m1
+        run: sed -i 's/android:label="[^"]*"/android:label="BoiVerse"/' android/app/src/main/AndroidManifest.xml
+      - name: Set app icon
+        working-directory: m1
+        run: dart run flutter_launcher_icons
       - name: Build APK
         working-directory: m1
         run: flutter build apk --release
